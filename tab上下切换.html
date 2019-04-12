@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        
+    }
+    body{
+        background-color: rgba(0,0,0,0.8);
+    }
+    .tab{
+        position: relative;
+        width: 1000px;
+        /*  左右居中  */
+        margin: 100px auto;  
+    }
+    .tab .menu{
+        position: absolute;
+        width: 100px;
+        
+    }
+    .tab .menu .key li{
+        width: 200px;
+        height: 80px;
+        line-height: 80px;
+        background-color: darkgray;
+        border-bottom: 1px solid #fff;
+        text-align: center;
+        font-size: 25px;
+    }
+    .tab .menu .key li:hover{
+        color: aliceblue;
+        background-color: #837f7f;
+        height: 100px;
+        line-height: 100px;
+    }
+    .tab .right {
+        position: absolute;
+        left: 250px;
+        width: 800px;
+        height: 400px;  
+        border: 1px solid black;
+       
+    }
+    .img-class img{
+        width: 600px;
+        height: 390px;
+        margin: 5px 100px;
+    }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <div class="menu">
+            <ul class="key">
+                <li>one</li>
+                <li>two</li>
+                <li>three</li>
+                <li>four</li>
+                <li>five</li>
+            </ul>
+        </div>
+        <div class="right">
+            <div class="img-class" style="background-image :url(img/bg1.png);"><img src="img/a1.png"></div>
+        </div>
+    </div>
+    <script>
+    var tab = document.getElementsByTagName("li");//获取所有li标签
+    var image = document.getElementsByTagName("img")[0];
+    var div = document.getElementsByClassName("img-class")[0];
+    for(var i = 0; i < tab.length ; i ++){
+        (function (i){
+            tab[i].onmouseover = function(){
+                image.src = "img/a" + (i + 1) + ".png";//修改显示的图片
+                div.style.backgroundImage = "url(img/bg" + (i + 1) + ".png)";//修改背景图片
+                document.body.style.backgroundImage = "url(img/bg" + (i + 2) + ".png)"; 
+        }
+        })(i);//立即执行函数解决闭包
+        
+    }
+    </script>
+</body>
+</html>
